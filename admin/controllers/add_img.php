@@ -45,7 +45,7 @@ try {
             if ($stmt->execute()) {    // one record inserted		
               
                 echo '<script language="javascript">alert("Thêm sản phẩm thành công!");</script>';
-                echo '<a href="../views/home_page.php">Trang Chủ</a> | <a href = "../views/Product/add_product.php">Tiếp thêm sản phẩm</a>';
+                echo '<a href="../views/home_page.php">Trang Chủ</a> | <a href = "../views/Product/add_product.php">Tiếp thêm sản phẩm</a>| <a href = "../views/Product/add_img.php">Tiếp thêm ảnh cho sản phẩm</a>';
                 // echo "Insert OK!";
 
                 exit();

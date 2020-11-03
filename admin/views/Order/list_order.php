@@ -29,7 +29,7 @@ include '../teamplate1/header.php';
  
             
 			// (1) set the number of rows per display page
-			$page_rows = 5;
+			$page_rows = 10;
 			$search = $_GET["search"];
 			// (2) get the total number of pagess already been calculated?
 			if ((isset($_GET['p']) && is_numeric($_GET['p']))) {
@@ -56,7 +56,7 @@ include '../teamplate1/header.php';
 				$start = 0;
 			}
 			// build the select user SQL
-			$query = "SELECT id, name, created_at, active   FROM transaction  where  id LIKE '%". $search ."%'  or name LIKE '%". $search ."%'  or created_at LIKE '%". $search ."%' or status = 1 ";
+			$query = "SELECT id, name, created_at, active ,status  FROM transaction  where  id LIKE '%". $search ."%'  or name LIKE '%". $search ."%'  or created_at LIKE '%". $search ."%' or status = 1 ORDER BY id DESC ";
 			// (4) add LIMIT clause
 			$query .= " LIMIT ?,?";
 			$stmt = $conn->stmt_init();
@@ -73,7 +73,7 @@ include '../teamplate1/header.php';
 						<th scope="col">Tên khách hàng</th>
                         <th scope="col">Ngày mua </th>
 						<th scope="col">Thông Tin </th>
-						<th scope="col">Cập nhật trạng thái </th>
+						<th scope="col">Trạng thái </th>
 						<th scope="col">Tình trạng</th>
                         	</tr>';
 				// fetch and print all the records:							
@@ -81,18 +81,30 @@ include '../teamplate1/header.php';
                     // remove special characters that might already be in table to reduce the chance of XSS exploits
                     // name sale price quantity
 					$id = htmlspecialchars($row['id'], ENT_QUOTES);
-					$name = htmlspecialchars($row['name'], ENT_QUOTES);		
+					$name = htmlspecialchars($row['name'], ENT_QUOTES);	
+					$status = htmlspecialchars($row['status'], ENT_QUOTES);	
 					$created_at = htmlspecialchars($row['created_at'], ENT_QUOTES);
-                    $active = htmlspecialchars($row['active'], ENT_QUOTES);
+					$active = htmlspecialchars($row['active'], ENT_QUOTES);
 					
 					echo '<tr>
 							
 							<td>' . $id . '</td>
 							<td>' . $name . '</td>
-                            <td>' . $created_at .' </td>
-
+							<td>' . $created_at .' </td>
 							<td><a href="../Order/order_information.php?id=' . $id . '">Xem thông tin </a></td>
-							<td><a href="../Order/edit_order.php?id=' . $id . '">Cập nhật</a></td>
+							<td><a href="../Order/edit_order.php?id=' . $id . '">';
+							if ($status == 1) {
+								echo'Đang giao hàng';
+							}
+							else if($status == 2) {
+								echo'Đã giao hàng ';
+							}
+							else{
+								echo'
+								Đang xử lý';
+							}
+							echo '</td></a></td>
+						
 							';
 							if ($active == 0) {
 								echo'
@@ -111,7 +123,7 @@ include '../teamplate1/header.php';
 				exit;
 			}
 			// (6) display the total number of records and paging button     
-			$query = "SELECT id, name, created_at   FROM transaction  where  id LIKE '%". $search ."%'  or name LIKE '%". $search ."%'  or created_at LIKE '%". $search ."%' or status = 1";
+			$query = "SELECT id, name, created_at,status   FROM transaction  where  id LIKE '%". $search ."%'  or name LIKE '%". $search ."%'  or created_at LIKE '%". $search ."%' or status = 1 ORDER BY id DESC";
 			$result = $conn->query($query);
 			$row = $result->fetch_array(MYSQLI_NUM);
 			$members = htmlspecialchars($row[0], ENT_QUOTES);

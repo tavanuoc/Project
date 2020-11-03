@@ -96,11 +96,8 @@ include '../teamplate1/header.php';
 
                             <div class="form-group row">
                               <label class="col-2" >Ngày tạo</label >                            
-                              <td>: ' .$created_at. '</td>
-                            </div>
-
-                            <td><a href="../Product/delete_product.php?id=' . $id . '" onclick="return checkDelete()">Ẩn khách hàng</a></td>
-							</div>
+							  <td>: ' .$created_at. '</td>
+							  </div>
                 ';
                 
 				echo '</form>';

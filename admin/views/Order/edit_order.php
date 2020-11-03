@@ -13,6 +13,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     
   
     $id_update = $_GET['id'];
+    $name = $_POST['name'];
+    $created_at = $_POST['created_at'];
+    $address = $_POST['address'];
+    $phone = $_POST['phone'];
+    $payment = $_POST['payment'];
+    $shipping = $_POST['shipping'];
+    // $status = $_POST['status'];
+    // $status = $_POST['status'];
+    // $status = $_POST['status'];
     $status = $_POST['status'];
         $query = 'UPDATE transaction SET  status=? WHERE id=?';
         $stmt = $conn->stmt_init();
@@ -40,7 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
           <?php
                     if (isset($_GET['id']))
                         $id_capnhat = $_GET['id'];
-                    $sql_capnhat = mysqli_query($conn, "SELECT status FROM transaction WHERE id='$id_capnhat'");
+                    $sql_capnhat = mysqli_query($conn, "SELECT * FROM transaction WHERE id='$id_capnhat'");
                     $row_capnhat = mysqli_fetch_array($sql_capnhat);
                     ?>
 
@@ -49,13 +58,42 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
             <form class="form" action="" method="POST" enctype="multipart/form-data">
 
+
               <div class="form-group">
+                <label>Tên khách hàng</label>
+                <input type="id" class="form-control" name="name" placeholder=""
+                  value="<?php echo $row_capnhat['name'] ?>" required="">
+              </div>
+              <div class="form-group">
+                <label>Số điện thoại</label>
+                <input type="id" class="form-control" name="phone" placeholder=""
+                  value="<?php echo $row_capnhat['phone'] ?>" required="">
+              </div>
+              <div class="form-group">
+                <label>Địa chỉ</label>
+                <input type="id" class="form-control" name="address" placeholder=""
+                  value="<?php echo $row_capnhat['address'] ?>" required="">
+              </div>
+              <div class="form-group">
+                <label>Thanh toán</label>
+                <input type="id" class="form-control" name="payment" placeholder=""
+                  value="<?php echo $row_capnhat['payment'] ?>" required="">
+              </div>  
+              <div class="form-group">
+                <label>Giao hàng</label>
+                <input type="id" class="form-control" name="shipping" placeholder=""
+                  value="<?php echo $row_capnhat['shipping'] ?>" required="">
+              </div>  
+               <div class="form-group">
                 <label>Trạng thái</label>
                 <input type="id" class="form-control" name="status" placeholder="Nhập trạng thái"
                   value="<?php echo $row_capnhat['status'] ?>" required="">
-              </div>
+              </div>  
+    
               <input type="submit" name="updateNews" value="CẬP NHẬT" class="btn btn-default">
-              <input type="submit" name="huycapnhat" value="HỦY" class="btn btn-default">
+              <a class="btn btn-default"href="../Order/list_order.php">HỦY</a>
+              
+              <!-- <input type="submit" name="huycapnhat" value="HỦY" class="btn btn-default"> -->
 
             </form>
           </div>

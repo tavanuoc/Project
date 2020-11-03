@@ -8,24 +8,20 @@ try {
  // get form inputs
 $name = $_POST['name'];
 // echo $product_name;
-
-
 $price = $_POST['price'];
-
-
 $category_id = $_POST['category_id'];
-// $category_id = 15;
-
 $sale = $_POST['sale'];
-
-
 $content = $_POST['content'];
-
-
 $quantity = $_POST['quantity'];
-
-
 $hot = $_POST['hot'];
+$display = $_POST['display'];
+$ram = $_POST['	ram'];
+$rom = $_POST['rom'];
+$cpu = $_POST['cpu'];
+$camera_front = $_POST['camera_front'];
+$rear_camera = $_POST['rear_camera'];
+$operating_system = $_POST['operating_system'];
+$graphics_chip = $_POST['graphics_chip'];
 
 
 
@@ -61,10 +57,10 @@ $avatar = $_FILES['avatar'];
           
             // echo '<script language="javascript">alert("Đã upload lên sv thành công!");</script>';
             // Make and prepare the query  
-            $query = "INSERT INTO product (name, category_id, price, sale, content, quantity, hot,  avatar) VALUES (?,?,?,?,?,?,?,?)";
+            $query = "INSERT INTO product (name, category_id, price, sale, content, quantity, hot,  avatar,operating_system,rom,rear_camera,ram,graphics_chip,display,camera_front,cpu) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
            
             $stmt = $conn->prepare($query);
-            $stmt->bind_param("siiisiis",  $name, $category_id, $price,  $sale,  $content, $quantity, $hot,  $file_name );
+            $stmt->bind_param("siiisissssssssss",  $name, $category_id, $price,  $sale,  $content, $quantity, $hot,  $file_name, $operating_system, $rom, $rear_camera,$ram, $graphics_chip, $display, $camera_front,$cpu );
             // run and check the query's result
             if ($stmt->execute()) {    // one record inserted			
                 echo '<script language="javascript">alert("Thêm sản phẩm thành công!");</script>';

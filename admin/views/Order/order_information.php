@@ -75,79 +75,75 @@ include '../teamplate1/header.php';
 					$transaction_created_at = htmlspecialchars($row['transaction_created_at'], ENT_QUOTES);	
 				}
                     echo '
-                    <form   enctype="multipart/form-data">
+                    <form class="table table-bordered "  enctype="multipart/form-data">
                         
-                    <div class = "row card ">
-                   <div class = "col-8">
-				   <div class="form-group row">
+                    <div class = "container card ">
+                   <div class = "col-12">
+				   <div class="form-group ">
 				   
-                   <label class="col-2" >Mã hóa đơn </label >
-                   <td>:' . $id . '</td>
+                   <label class="col-3" >Mã hóa đơn </label >
+                   <td >:' . $id . '</td>
 					</div>
 					 
-                <div class="form-group row">
-                   <label class="col-2" >Tên khách hàng </label >
-                   <td>:' .$transaction_name. '</td>
+                <div class="form-group ">
+                   <label class="col-3" >Tên khách hàng </label >
+                   <td scope="col">:' .$transaction_name. '</td>
 			   </div>
 
-			   <div class="form-group row">
-			   <label class="col-2" >Địa chỉ </label >
-			   <td>:' .$transaction_address. '</td>
+			   <div class="form-group ">
+			   <label class="col-3" >Địa chỉ </label >
+			   <td scope="col">:' .$transaction_address. '</td>
 		   </div>
 
-		   <div class="form-group row">
-		   <label class="col-2" >Số điện thoại </label >
-		   <td>:' .$transaction_phone. '</td>
+		   <div class="form-group ">
+		   <label class="col-3" >Số điện thoại </label >
+		   <td scope="col">:' .$transaction_phone. '</td>
 	        </div>
 
-	         <div class="form-group row">                                        
-	         <label class="col-2" >Tên sản phẩm</label >                    
-	         <td>:' .$product_name. '</td>              
+	         <div class="form-group ">                                        
+	         <label class="col-3" >Tên sản phẩm</label >                    
+	         <td scope="col">:' .$product_name. '</td>              
 	            </div>   
 
-               <div class="form-group row">
-                  <label class="col-2" >Gía:</label >
+               <div class="form-group ">
+                  <label class="col-3" >Gía:</label >
                  
-                  <td>:' .$price. '₫</td>
+                  <td scope="col">:' .$price. '₫</td>
 			   </div>   
 			   
-               <div class="form-group row">
-                 <label class="col-2" >Số lượng</label > 
-                 <td>:' .$quantity. '</td>
+               <div class="form-group ">
+                 <label class="col-3" >Số lượng</label > 
+                 <td scope="col">:' .$quantity. '</td>
 			   </div>
 
-			   <div class="form-group row">
-			   <label class="col-2" >Tổng tiền</label > 
-			   <td>:' .$amount. '₫</td>
+			   <div class="form-group ">
+			   <label class="col-3" >Tổng tiền</label > 
+			   <td scope="col">:' .$amount. '₫</td>
 			 </div>
 
-			 <div class="form-group row">
-			 <label class="col-2" >Thanh toán </label >
-			 <td>:' .$transaction_payment. '</td>
+			 <div class="form-group ">
+			 <label class="col-3" >Thanh toán </label >
+			 <td scope="col">:' .$transaction_payment. '</td>
 		      </div>
-             <div class="form-group row">
-             <label class="col-2" >Ngày giao dich </label > 
-              <td>:' .$transaction_created_at. '</td>
+             <div class="form-group ">
+             <label class="col-3" >Ngày giao dich </label > 
+              <td scope="col">:' .$transaction_created_at. '</td>
 			  </div>   
-			  
-				 </div> 
-				 <div class="form-group row">
-				 <label class="col-2" >Trạng thái </label > 	
-				  <td>:
-				  ';
+				
+				 <div class="form-group ">
+				 <label class="col-3" >Trạng thái </label > 	
+				  <td scope="col">:';
 				if ($transaction_status == 1) {
-					echo'
-					<td>Đang giao hàng</td>';
+					echo'Đang giao hàng';
 				}
-				elseif($transaction_status == 2) {
-					echo'
-					<td>Đã giao hàng </td>';
+				else if($transaction_status == 2) {
+					echo'Đã giao hàng ';
 				}
 				else{
 					echo'
-					<td >Đang xử lý</td>';
+					Đang xử lý';
 				}
-				echo '</tr>
+				echo '</td>
 				</div>   
 				</div>  ';    
         echo '</form>';

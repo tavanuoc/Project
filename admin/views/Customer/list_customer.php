@@ -37,7 +37,7 @@ include '../teamplate1/header.php';
 			// connect to database
 			require('../../../lib/mysqli_connect.php');
 			// (1) set the number of rows per display page
-			$page_rows = 5;
+			$page_rows = 10;
 			$search = $_GET["search"];
 			// (2) get the total number of pagess already been calculated?
 			if ((isset($_GET['p']) && is_numeric($_GET['p']))) {
@@ -121,7 +121,7 @@ include '../teamplate1/header.php';
 				exit;
 			}
 			// (6) display the total number of records and paging button     
-			$query = "SELECT id, name, email  FROM db_user WHERE id LIKE '%". $search ."%'  or name LIKE '%". $search ."%' or email LIKE '%". $search ."%'";
+			$query = "SELECT id, name, email  FROM db_user WHERE id LIKE '%". $search ."%'  or name LIKE '%". $search ."%' or email LIKE '%". $search ."%' ORDER BY id DESC";
 			$row = $result->fetch_array(MYSQLI_NUM);
 			$members = htmlspecialchars($row[0], ENT_QUOTES);
 			$conn->close();   

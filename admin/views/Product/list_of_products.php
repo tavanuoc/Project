@@ -30,7 +30,7 @@ include '../teamplate1/header.php';
  
             
 			// (1) set the number of rows per display page
-			$page_rows = 5;
+			$page_rows = 10;
 			$search = $_GET["search"];
 			// (2) get the total number of pagess already been calculated?
 			if ((isset($_GET['p']) && is_numeric($_GET['p']))) {
@@ -109,13 +109,8 @@ include '../teamplate1/header.php';
 							
 				}
 				echo '</table>';
-				// free up the resources                                                         
-				$result->free_result(); 
-			} else { 
-				echo '<p class="text-center">The current db_user could not be retrieved.</p>';
-				exit;
-			}
-			// (6) display the total number of records and paging button     
+				// free up the resources
+						// (6) display the total number of records and paging button     
 			$query = "SELECT product.id, product.name, product.price, category.name FROM product INNER JOIN category ON product.category_id = category.id where  product.id LIKE '%". $search ."%'  or product.name LIKE '%". $search ."%' or category.name LIKE '%". $search ."%' or price LIKE '%". $search ."%' ORDER BY id DESC" ;
 			$result = $conn->query($query);
 			$row = $result->fetch_array(MYSQLI_NUM);
@@ -138,6 +133,11 @@ include '../teamplate1/header.php';
 				}
 				$nav_string .= '</p>';
 				echo $nav_string;
+			}                                                         
+				$result->free_result(); 
+			} else { 
+				echo '<p class="text-center">The current db_user could not be retrieved.</p>';
+				exit;
 			}
 			$conn->close(); 
 		} catch (Exception $e) {

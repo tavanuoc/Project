@@ -67,6 +67,47 @@ $category = mysqli_query($conn,"SELECT * FROM category");
                                 </div>
 
                                 <div class="form-group">
+                                    <label>Kích thước</label>
+                                    <input type="text" class="form-control" name="display" placeholder="Nhập số lượng"
+                                        required="">
+                                </div>
+                                <div class="form-group">
+                                    <label>Camera trước</label>
+                                    <input type="text" class="form-control" name="camera_front" placeholder="Nhập số lượng"
+                                        required="">
+                                </div>
+                                <div class="form-group">
+                                    <label>Camera sau</label>
+                                    <input type="text" class="form-control" name="rear_camera" placeholder="Nhập số lượng"
+                                        required="">
+                                </div>
+                                <div class="form-group">
+                                    <label>Ram</label>
+                                    <input type="text" class="form-control" name="ram" placeholder="Nhập số lượng"
+                                        required="">
+                                </div>
+                                <div class="form-group">
+                                    <label>Rom</label>
+                                    <input type="text" class="form-control" name="rom" placeholder="Nhập số lượng"
+                                        required="">
+                                </div>
+                                <div class="form-group">
+                                    <label>CPU</label>
+                                    <input type="text" class="form-control" name="cpu" placeholder="Nhập số lượng"
+                                        required="">
+                                </div>
+                                <div class="form-group">
+                                    <label>Hệ điều hành</label>
+                                    <input type="text" class="form-control" name="operating_system" placeholder="Nhập số lượng"
+                                        required="">
+                                </div>
+                                <div class="form-group">
+                                    <label>Chip đồ họa</label>
+                                    <input type="text" class="form-control" name="graphics_chip" placeholder="Nhập số lượng"
+                                        required="">
+                                </div>
+
+                                <div class="form-group">
                                     <label>Sản phẩm nổi bật</label>
                                     <input type="text" class="form-control" name="hot" placeholder="Yes = 1, No = 0"
                                         required="">
