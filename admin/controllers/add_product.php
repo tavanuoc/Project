@@ -1,4 +1,10 @@
 <?php
+include '../teamplate/head.php';
+include '../teamplate/header.php';
+?>
+
+
+<?php
 try {
     require('../../lib/mysqli_connect.php');
     // check connection
@@ -82,4 +88,8 @@ $avatar = $_FILES['avatar'];
 catch (Exception $e) {
     echo 'Caught exception: ',  $e->getMessage(), "\n";
 }
+?>
+<?php
+
+include '../teamplate/script.php';
 ?>

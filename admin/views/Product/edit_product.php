@@ -177,9 +177,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
               </div>
 
            
-
+              <a class="btn btn-primary"href="../Product/add_img.php">Sửa ảnh phụ</a>
               <input type="submit" name="updateNews" value="CẬP NHẬT" class="btn btn-primary">
               <a class="btn btn-default"href="../Product/list_of_products.php">HỦY</a>
+              
               <!-- <input type="submit" name="huy" value="HỦY" class="btn btn-default"> -->
 
             </form>

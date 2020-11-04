@@ -126,11 +126,8 @@ $category = mysqli_query($conn,"SELECT * FROM category");
 
                                 <label>Ảnh Đại Điện</label>
                                 <input type="file" class="form-control" name="avatar"><br>
-
-                                <!-- <label>Ảnh phụ</label>
-                                <input type="file" class="form-control" name="image" multiple="multiple"><br> -->
-
-                                <button class="form-control ">Thêm sản phẩm</button>
+                                
+                                <button  class="btn btn-primary">Thêm sản phẩm</button>
                             </div>
                         </div>
 

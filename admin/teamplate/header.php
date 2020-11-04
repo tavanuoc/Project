@@ -113,10 +113,9 @@ if ( ($email == "") || ($email == null) ) {
                         </li>
 
 
-                        <li class="has-sub">
+                        <!-- <li class="has-sub">
                             <a class="js-arrow" href="#">
-                                <i class="fas fa-copy"></i>
-Các trang</a>
+                                <i class="fas fa-copy"></i>Các trang</a>
                             <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
                                 <li>
                                     <a href="../views/Login.php">Đăng Nhập</a>
@@ -129,7 +128,7 @@ Các trang</a>
                                     <a href="../views/orget-pass.php">Forget Password</a>
                                 </li>
                             </ul>
-                        </li>
+                        </li> -->
 
 
                     </ul>
@@ -232,7 +231,7 @@ Các trang</a>
                             </ul>
                         </li>
 
-
+<!-- 
                         <li class="has-sub">
                             <a class="js-arrow" href="#">
                                 <i class="fas fa-copy"></i>Các trang</a>
@@ -248,7 +247,7 @@ Các trang</a>
                                     <a href="../views/orget-pass.php">Forget Password</a>
                                 </li>
                             </ul>
-                        </li>
+                        </li> -->
 
                     </ul>
                 </nav>

@@ -27,9 +27,9 @@ $product = mysqli_query($conn,"SELECT * FROM product");
                             <div class="card card-4">
                                             <div class="card-body">
                                             <div class="form-group">
-                                    <label>Chọn danh mục</label>
+                                    <label>Chọn sản phẩm</label>
                                     <select name="product_id" id="input" class=" form-control" required="required">
-                                        <option value="product_id">Chọn danh mục</option>
+                                        <option value="product_id">Chọn sản phẩm</option>
                                         <?php foreach ($product as $key => $value) { ?>
                                             
                                         <option value="<?php echo $value['id']?>"> <?php
@@ -47,7 +47,7 @@ $product = mysqli_query($conn,"SELECT * FROM product");
                                 <label>Ảnh Đại Điện</label>
                                 <!-- <input type="file" class="form-control" name="image_name"><br> -->
                                 <input type="file" class="form-control" name="image_name" multiple="multiple"><br>
-                                <button class = "form-control " >Thêm ảnh phụ</button>
+                                <button class="btn btn-primary" >Thêm ảnh phụ</button>
                                 </div>
                     </div>
                             </form>
