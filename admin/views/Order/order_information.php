@@ -5,14 +5,13 @@ include '../teamplate1/head.php';
 include '../teamplate1/header.php';
 ?>
 
-        <div class="page-container">
-       
-      
-            <div class="main-content">
-                <div class="section__content section__content--p30">
-                    <div class="container-fluid">
-		<h2 class="text-center">Chi tiết hóa đơn</h2>
-		<?php
+<div class="page-container">
+
+	<div class="main-content">
+		<div class="section__content section__content--p30">
+			<div class="container-fluid">
+				<h2 class="text-center">Chi tiết hóa đơn</h2>
+				<?php
 		try {
 			  $id = $_GET["id"];
 			  
@@ -75,10 +74,10 @@ include '../teamplate1/header.php';
 					$transaction_created_at = htmlspecialchars($row['transaction_created_at'], ENT_QUOTES);	
 				}
                     echo '
-                    <form class="table table-bordered "  enctype="multipart/form-data">
+                    <form class="table table-bordered card"  enctype="multipart/form-data">
                         
-                    <div class = "container card ">
-                   <div class = "col-12">
+                    <div class = "container  ">
+                   <div class = "col-12 ">
 				   <div class="form-group ">
 				   
                    <label class="col-3" >Mã hóa đơn </label >
@@ -133,15 +132,27 @@ include '../teamplate1/header.php';
 				 <div class="form-group ">
 				 <label class="col-3" >Trạng thái </label > 	
 				  <td scope="col">:';
+			
 				if ($transaction_status == 1) {
-					echo'Đang giao hàng';
+					echo'Đã tiếp nhận đơn hàng';
 				}
 				else if($transaction_status == 2) {
-					echo'Đã giao hàng ';
+					echo'Đã giao Chuyển hàng cho shipper ';
 				}
-				else{
-					echo'
-					Đang xử lý';
+				else if($transaction_status == 3) {
+					echo'Shipper đang giao hàng';
+				}
+				else if($transaction_status == 4) {
+					echo'Người dùng đã nhận hàng';
+				}
+				else if($transaction_status == 5) {
+					echo'Hoàn thành';
+				}
+				else if($transaction_status == 6) {
+					echo'Người dùng đã hủy';
+				}
+				else if($transaction_status == 0) {
+					echo'Đang chờ xử lý';
 				}
 				echo '</td>
 				</div>   
@@ -150,41 +161,18 @@ include '../teamplate1/header.php';
             
                                                                     
 				$result->free_result(); 
-				$query = "SELECT o.id, o.quantity,o.name as product_name,o.price,o.amount,transaction.name as transaction_name,transaction.address as transaction_address,transaction.phone as transaction_phone,transaction.payment as transaction_payment,transaction.created_at as transaction_created_at ,transaction.status as transaction_status 
-				FROM ordere o INNER JOIN transaction ON o.transaction_id = transaction.id where o.id =  $id ";
-				$result = $conn->query($query);
-				$row = $result->fetch_array(MYSQLI_NUM);
-				$members = htmlspecialchars($row[0], ENT_QUOTES);
-				$conn->close();   
-				$nav_string = "<p class='text-center'> Hóa đơn : $id</p>";
-				$nav_string .= "<p class='text-center'>";
-				if ($pages > 1) {                                             
-					// what number is the current page?
-					$current_page = ($start / $page_rows) + 1;
-					// if the page is not the first page then create a Previous link
-					if ($current_page != 1) {
-						$nav_string .= '<a href="list_order.php?s=' . ($start - $page_rows) .
-							'&p=' . $pages . '">Quay lại</a> | ';
-					}
-					// create a Next link                                                  
-					if ($current_page != $pages) {
-						$nav_string .= ' <a href="list_order.php?s=' . ($start + $page_rows) .
-							'&p=' . $pages . '">Quay lại</a> ';
-					}
-					$nav_string .= '</p>';
-					echo $nav_string;
-				}
-				$conn->close();
+				echo '<a href="../../views/Order/list_order.php">Danh sách hóa đơn</a>';
+		
 			} else { 
-				echo '<p class="text-center">The current db_user could not be retrieved.</p>';
-				
+				echo '<p class="text-center">Không thể truy xuất đơn hàng hiện tại.</p>';
 			}
+			$conn->close();   
 		} catch (Exception $e) {
 			print "An Exception occurred. Message: " . $e->getMessage();
 		}
 		?>
-	</div>
-<?php
+			</div>
+			<?php
 
 include '../teamplate1/script.php';
 ?>

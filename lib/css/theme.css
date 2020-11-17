@@ -324,14 +324,14 @@ section {
 
 .page-wrapper {
     overflow: hidden;
-    background: #eeeeee;
-    padding-bottom: 8vh;
+    background: #F7941D;
+    /* padding-bottom: 8vh; */
 }
 
 @media (max-width: 991px) {
     .page-wrapper {
         overflow: auto;
-        background: #eeeeee;
+        background: #F7941D !important;
         padding-bottom: 12vh;
     }
 }
@@ -1284,6 +1284,7 @@ section {
         top: 0;
         left: 0;
         height: 170px;
+        display: none !important;
     }
 }
 
@@ -1730,6 +1731,7 @@ section {
 
 .header-mobile .header-mobile__bar {
     padding: 15px 0;
+    background: #F7941D !important;
 }
 
 .header-mobile .header-mobile-inner {

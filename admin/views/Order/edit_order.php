@@ -54,8 +54,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     ?>
 
           <div class="col-md-12 card ">
-
-
             <form class="form" action="" method="POST" enctype="multipart/form-data">
 
 
@@ -84,22 +82,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <input type="id" class="form-control" name="shipping" placeholder=""
                   value="<?php echo $row_capnhat['shipping'] ?>" required="">
               </div>  
+
                <div class="form-group">
                 <label>Trạng thái</label>
                 <input type="id" class="form-control" name="status" placeholder="Nhập trạng thái"
                   value="<?php echo $row_capnhat['status'] ?>" required="">
               </div>  
-    
+
               <input type="submit" name="updateNews" value="CẬP NHẬT" class="btn btn-default">
               <a class="btn btn-default"href="../Order/list_order.php">HỦY</a>
-              
-              <!-- <input type="submit" name="huycapnhat" value="HỦY" class="btn btn-default"> -->
-
             </form>
           </div>
-
-
-
+        
         </div>
       </div>
       <div class="clearfix"></div>

@@ -28,36 +28,17 @@ if ( ($email == "") || ($email == null) ) {
             <nav class="navbar-mobile">
                 <div class="container-fluid">
                     <ul class="navbar-mobile__list list-unstyled">
-
-
                         <li>
                             <a href="../home_page.php">
                                 <i class="zmdi zmdi-balance"></i>Trang Chủ </a>
                         </li>
                         <li class="has-sub">
-                            <a class="js-arrow" href="#">
-                                <i class="zmdi zmdi-account-o"></i>Quản Lý khách hàng</a>
-                            <ul class="list-unstyled navbar__sub-list js-sub-list">
-                                <li>
-                                    <a href="../Customer/list_customer.php">Danh Sách Khách Hàng</a>
-                                </li>
-                             
-
-
-                            </ul>
+                            <a class="js-arrow" href="../Order/list_order.php">
+                                <i class="zmdi zmdi-shopping-cart"></i>Quản Lý Đơn Hàng</a>
                         </li>
-
                         <li class="has-sub">
-                            <a class="js-arrow" href="#">
-                                <i class="zmdi zmdi-shopping-cart"></i>quản lý Đơn Hàng</a>
-                            <ul class="list-unstyled navbar__sub-list js-sub-list">
-                                <li>
-                                    <a href="../Order/list_order.php">Danh Sách Đơn Hàng</a>
-                                </li>
-                                
-
-
-                            </ul>
+                            <a class="js-arrow" href="../Customer/list_customer.php">
+                                <i class="zmdi zmdi-account-o"></i>Quản Lý khách hàng</a>
                         </li>
                         <li class="has-sub">
                             <a class="js-arrow" href="#">
@@ -66,12 +47,9 @@ if ( ($email == "") || ($email == null) ) {
                                 <li>
                                     <a href="../Product/list_of_products.php">Danh Sách Sản phẩm</a>
                                 </li>
-                               
                                 <li>
                                     <a href="../Product/add_product.php">Thêm sản phẩm</a>
                                 </li>
-
-
                             </ul>
                         </li>
                         <li class="has-sub">
@@ -84,13 +62,11 @@ if ( ($email == "") || ($email == null) ) {
                                 <li>
                                     <a href="../Category/addCategory.php">Thêm Danh Mục</a>
                                 </li>
-
-
                             </ul>
                         </li>
                         <li class="has-sub">
                             <a class="js-arrow" href="#">
-                                <i class="zmdi zmdi-shopping-cart"></i>Quản Lý Tin Tức</a>
+                                <i class="zmdi zmdi-eye"></i>Quản Lý Tin Tức</a>
                             <ul class="list-unstyled navbar__sub-list js-sub-list">
                                 <li>
                                     <a href="../News/manageNews.php">Danh Sách Tin Tức</a>
@@ -102,7 +78,7 @@ if ( ($email == "") || ($email == null) ) {
                         </li>
                         <li class="has-sub">
                             <a class="js-arrow" href="#">
-                                <i class="zmdi zmdi-shopping-cart"></i>Quản Lý Giao Hàng</a>
+                                <i class="zmdi zmdi-car"></i>Đơn Vị Giao Hàng</a>
                             <ul class="list-unstyled navbar__sub-list js-sub-list">
                                 <li>
                                     <a href="../Logistics/manageLogistics.php">Danh Sách Đơn Vị Giao Hàng</a>
@@ -114,22 +90,7 @@ if ( ($email == "") || ($email == null) ) {
                         </li>
 
 
-                        <!-- <li class="has-sub">
-                            <a class="js-arrow" href="#">
-                                <i class="fas fa-copy"></i>Các trang</a>
-                            <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
-                                <li>
-                                    <a href="../Login.php">Đăng Nhập</a>
-                                </li>
-                                <li>
-                                    <a href="../logout.php.php">Đăng Xuất</a>
-                                </li>
-
-                                <li>
-                                    <a href="../orget-pass.php">Forget Password</a>
-                                </li>
-                            </ul>
-                        </li> -->
+                 
 
                     </ul>
                 </div>
@@ -152,30 +113,17 @@ if ( ($email == "") || ($email == null) ) {
                             <a href="../home_page.php">
                                 <i class="zmdi zmdi-balance"></i>Trang Chủ </a>
                         </li>
+                        
                         <li class="has-sub">
-                            <a class="js-arrow" href="#">
+                            <a class="js-arrow" href="../Order/list_order.php">
+                                <i class="zmdi zmdi-shopping-cart"></i>Quản Lý Đơn Hàng</a>                           
+                        </li>
+
+                        <li class="has-sub">
+                            <a class="js-arrow" href="../Customer/list_customer.php">
                                 <i class="zmdi zmdi-account-o"></i>Quản Lý khách hàng</a>
-                            <ul class="list-unstyled navbar__sub-list js-sub-list">
-                                <li>
-                                    <a href="../Customer/list_customer.php">Danh Sách Khách Hàng</a>
-                                </li>
-                            
-
-                            </ul>
                         </li>
 
-                        <li class="has-sub">
-                            <a class="js-arrow" href="#">
-                                <i class="zmdi zmdi-shopping-cart"></i>quản lý Đơn Hàng</a>
-                            <ul class="list-unstyled navbar__sub-list js-sub-list">
-                                <li>
-                                    <a href="../Order/list_order.php">Danh Sách Đơn Hàng</a>
-                                </li>
-                               
-
-
-                            </ul>
-                        </li>
                         <li class="has-sub">
                             <a class="js-arrow" href="#">
                                 <i class="zmdi zmdi-smartphone"></i>Quản Lý Sản phẩm</a>
@@ -183,12 +131,9 @@ if ( ($email == "") || ($email == null) ) {
                                 <li>
                                     <a href="../Product/list_of_products.php">Danh Sách Sản phẩm</a>
                                 </li>
-                              
                                 <li>
                                     <a href="../Product/add_product.php">Thêm sản phẩm</a>
                                 </li>
-
-
                             </ul>
                         </li>
                         <li class="has-sub">
@@ -201,13 +146,11 @@ if ( ($email == "") || ($email == null) ) {
                                 <li>
                                     <a href="../Category/addCategory.php">Thêm Danh Mục</a>
                                 </li>
-
-
                             </ul>
                         </li>
                         <li class="has-sub">
                             <a class="js-arrow" href="#">
-                                <i class="zmdi zmdi-shopping-cart"></i>Quản Lý Tin Tức</a>
+                                <i class="zmdi zmdi-eye"></i>Quản Lý Tin Tức</a>
                             <ul class="list-unstyled navbar__sub-list js-sub-list">
                                 <li>
                                     <a href="../News/manageNews.php">Danh Sách Tin Tức</a>
@@ -219,34 +162,18 @@ if ( ($email == "") || ($email == null) ) {
                         </li>
                         <li class="has-sub">
                             <a class="js-arrow" href="#">
-                                <i class="zmdi zmdi-shopping-cart"></i>Quản Lý Giao Hàng</a>
+                                <i class="zmdi zmdi-car"></i>Đơn Vị Vận Chuyển</a>
                             <ul class="list-unstyled navbar__sub-list js-sub-list">
                                 <li>
-                                    <a href="../Logistics/manageLogistics.php">Danh Sách Đơn Vị Giao Hàng</a>
+                                    <a href="../Logistics/manageLogistics.php">Danh Sách Đơn Vị Vận Chuyển</a>
                                 </li>
                                 <li>
-                                    <a href="../Logistics/addLogistics.php">Thêm Đơn Vị Giao Hàng</a>
+                                    <a href="../Logistics/addLogistics.php">Thêm Đơn Vị Vận Chuyển</a>
                                 </li>
                             </ul>
                         </li>
 
-                        <!-- <li class="has-sub">
-                            <a class="js-arrow" href="#">
-                                <i class="fas fa-copy"></i>Các trang</a>
-                            <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
-                                <li>
-                                    <a href="../index.php">Đăng Nhập</a>
-                                </li>
-                                <li>
-                                    <a href="../logout.php">Đăng Xuất</a>
-                                </li>
-
-                                <li>
-                                    <a href="../orget-pass.php">Forget Password</a>
-                                </li>
-                            </ul>
-                        </li> -->
-
+                     
                     </ul>
                 </nav>
             </div>
@@ -263,23 +190,22 @@ if ( ($email == "") || ($email == null) ) {
                             <form class="form-header" action="" method="POST">
                             </form>
                             <div class="header-button">
-                        
                                 <div class="account-wrap">
                                     <div class="account-item clearfix js-item-menu">
                                         <div class="content">
                                             <?php
-                                            session_start();
+                                          
                                             if (isset($_SESSION["admin"])) {
-                                            echo $_SESSION["admin"];
-                                               } else {
-                                                echo '<li><a href="login_form.php">Đăng nhập</a></li>';
-                                                 }
-                                             ?></a></li>
+                                            echo $_SESSION["admin"];} 
+                                              //else {
+                                            //     echo '<li><a href="login_form.php">Đăng nhập</a></li>';
+                                            //      }
+                                             ?>
                                         </div>
                                         <div class="account-dropdown js-dropdown">
                                             <div class="account-dropdown__footer">
                                                 <a href="../logout.php">
-                                                    <i class="zmdi zmdi-power"></i>Logout</a>
+                                                    <i class="zmdi zmdi-power"></i>Đăng xuất</a>
                                             </div>
                                         </div>
                                     </div>

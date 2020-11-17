@@ -25,19 +25,18 @@ try {
             session_start();
             $_SESSION['admin'] = $email;
             header('Location: ../views/home_page.php');
-            
             exit();
         }
         else
         { // if it did not run OK.
-            echo "login not OK!";
-            exit();
+            echo '<a href="../views/index.php">Sai mật khuẩn vui lòng thử lại</a>';
+            
         }
        
     }
     else
     {
-            echo "deo co email dang nhap cdg???";
+            echo "Chưa có email";
         }
 
 } catch (Exception $e) {

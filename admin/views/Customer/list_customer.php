@@ -37,7 +37,7 @@ include '../teamplate1/header.php';
 			// connect to database
 			require('../../../lib/mysqli_connect.php');
 			// (1) set the number of rows per display page
-			$page_rows = 10;
+			$page_rows = 5;
 			$search = $_GET["search"];
 			// (2) get the total number of pagess already been calculated?
 			if ((isset($_GET['p']) && is_numeric($_GET['p']))) {
@@ -65,7 +65,6 @@ include '../teamplate1/header.php';
 			}
 			// build the select user SQL
 			$query = "SELECT id, name, email ,active FROM db_user WHERE id LIKE '%". $search ."%'  or name LIKE '%". $search ."%' or email LIKE '%". $search ."%' ORDER BY id DESC";
-			
 			// (4) add LIMIT clause
 			$query .= " LIMIT ?,?";
 			$stmt = $conn->stmt_init();
@@ -104,14 +103,12 @@ include '../teamplate1/header.php';
 							';
 							if ($active == 0) {
 								echo'
-								<td><a href="../Customer/show_customer.php?id=' . $id . '">Đã ẩn 	 </a></td>';
+								<td><a href="../Customer/show_customer.php?id=' . $id . '">Đã thôi hoạt động </a></td>';
 							}else{
 								echo'
-								<td><a href="../Customer/edit_customer.php?id=' . $id . '"">Đang hiển thị </a></td>';
+								<td><a href="../Customer/edit_customer.php?id=' . $id . '"">Đang hoạt động</a></td>';
 							}
 							echo '</tr>';
-                     
-						
 				}
 				echo '</table>';
 				// free up the resources                                                         
@@ -121,29 +118,31 @@ include '../teamplate1/header.php';
 				exit;
 			}
 			// (6) display the total number of records and paging button     
-			$query = "SELECT id, name, email  FROM db_user WHERE id LIKE '%". $search ."%'  or name LIKE '%". $search ."%' or email LIKE '%". $search ."%' ORDER BY id DESC";
+			$query = "SELECT id, name, email ,active FROM db_user WHERE id LIKE '%". $search ."%'  or name LIKE '%". $search ."%' or email LIKE '%". $search ."%' ORDER BY id DESC";
+			$result = $conn->query($query);
 			$row = $result->fetch_array(MYSQLI_NUM);
 			$members = htmlspecialchars($row[0], ENT_QUOTES);
 			$conn->close();   
-			$nav_string = "<p class='text-center'>Số lượng khách hàng: $members</p>";
+			$nav_string = "<p class='text-center'>Số lượng khách hàng:". $result->num_rows ."</p>";
 			$nav_string .= "<p class='text-center'>";
 			if ($pages > 1) {                                             
 				// what number is the current page?
 				$current_page = ($start / $page_rows) + 1;
 				// if the page is not the first page then create a Previous link
 				if ($current_page != 1) {
-					$nav_string .= '<a href="list_customer.php?s=' . ($start - $page_rows) .
+					$nav_string .= '<a href="../Customer/list_customer.php?s=' . ($start - $page_rows) .
 						'&p=' . $pages . '">Quay lại</a> | ';
 				}
 				// create a Next link                                                  
 				if ($current_page != $pages) {
-					$nav_string .= ' <a href="list_customer.php?s=' . ($start + $page_rows) .
-						'&p=' . $pages . '">Trang sau</a> ';
+					$nav_string .= ' <a href="../Customer/list_customer.php?s=' . ($start + $page_rows) .
+						'&p=' . $pages . '">Trang tiếp</a> ';
 				}
 				$nav_string .= '</p>';
 				echo $nav_string;
 			}
 			$conn->close(); 
+		
 		} catch (Exception $e) {
 			print "An Exception occurred. Message: " . $e->getMessage();
 		}

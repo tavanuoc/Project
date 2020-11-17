@@ -99,7 +99,7 @@ include '../teamplate1/header.php';
 							;
 							if ($status == 0) {
 								echo'
-								<td><a href="../Product/show_product.php?id=' . $id . '">Đã ẩn 	 </a></td>';
+								<td><a href="../Product/show_product.php?id=' . $id . '">Đã ẩn</a></td>';
 							}else{
 								echo'
 								<td><a href="../Product/hidden_product.php?id=' . $id . '" onclick="return checkDelete()">Đang hiển thị </a></td>';
@@ -116,7 +116,7 @@ include '../teamplate1/header.php';
 			$row = $result->fetch_array(MYSQLI_NUM);
 			$members = htmlspecialchars($row[0], ENT_QUOTES);
 			$conn->close();   
-			$nav_string = "<p class='text-center'>Số lượng sản  phẩm: $members</p>";
+			$nav_string = "<p class='text-center'>Số lượng sản  phẩm: ". $result->num_rows ."</p>";
 			$nav_string .= "<p class='text-center'>";
 			if ($pages > 1) {                                             
 				// what number is the current page?

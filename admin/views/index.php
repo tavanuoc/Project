@@ -19,24 +19,18 @@ include '../teamplate/head.php'
                             
                             <form action="../controllers/Login.php" method="post" onsubmit="return checked();" name="login" id="login" enctype="multipart/form-data">
                                 <div class="form-group">
-                                    <label>Email Address</label>
+                                    <label>Email </label>
                                     <input class="au-input au-input--full" type="email" name="email" placeholder="Email">
                                 </div>
                                 <div class="form-group">
-                                    <label>Password</label>
-                                    <input class="au-input au-input--full" type="password" name="password" placeholder="Password">
+                                    <label>Mật khẩu</label>
+                                    <input class="au-input au-input--full" type="password" name="password" placeholder="Mật khẩu">
                                 </div>
                               
-                                <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit">sign in</button>
+                                <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit">Đăng Nhập</button>
                                
                             </form>
-                            <div class="register-link">
-                                <p>
-                                    
-                                      
-                                    <a href="../views/forget-pass.php">Password retrieval</a>
-                                </p>
-                            </div>
+                        
                         </div>
                     </div>
                 </div>

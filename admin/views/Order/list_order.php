@@ -13,14 +13,24 @@ include '../teamplate1/header.php';
             <div class="main-content">
                 <div class="section__content section__content--p30">
                     <div class="container-fluid">
-		<h2 class="text-center">Danh sách đơn hàng</h2>
+		<h2 class="text-center">Đơn hàng đang được sử lý</h2>
 		<form class="form-header" action="" id = "product-search" method = "GET">
-                                <input class="au-input au-input--xl" type="text" name="search" placeholder="Tìm kiếm đơn hàng" />
+		<select name="status" id="">
+		<option value="">Chọn trạng thái</option>
+								<option value="1">Đã tiếp nhận đơn hàng</option>
+								<option value="2">Đã giao Chuyển hàng cho shipper</option>
+								<option value="3">Shipper đang giao hàng</option>
+								<option value="4">Người dùng đã nhận hàng</option>
+								<option value="5">Hoàn thành đơn hàng</option>
+								<option value="6">Người dùng đã hủy</option>
+								</select>
+                                <input class="au-input au-input--xl" type="text" name="search" placeholder="Tìm kiếm đơn hàng"/>
                                 <button class="au-btn--submit" type="submit">
-									<!-- <i class="zmdi zmdi-search"></i> -->
 									<input class = "form-header" type="submit" value ="Tìm kiếm">
                                 </button>
-                            </form>
+								
+
+        </form>
 
 		<?php
 		try {
@@ -31,6 +41,7 @@ include '../teamplate1/header.php';
 			// (1) set the number of rows per display page
 			$page_rows = 10;
 			$search = $_GET["search"];
+			$status = $_GET["status"];
 			// (2) get the total number of pagess already been calculated?
 			if ((isset($_GET['p']) && is_numeric($_GET['p']))) {
 				$pages = htmlspecialchars($_GET['p'], ENT_QUOTES);
@@ -56,7 +67,7 @@ include '../teamplate1/header.php';
 				$start = 0;
 			}
 			// build the select user SQL
-			$query = "SELECT id, name, created_at, active ,status  FROM transaction  where  id LIKE '%". $search ."%'  or name LIKE '%". $search ."%'  or created_at LIKE '%". $search ."%' or status = 1 ORDER BY id DESC ";
+			$query = "SELECT id, name, created_at,status   FROM transaction  where  id LIKE '%". $search ."%'  and name LIKE '%". $search ."%'  and created_at LIKE '%". $search ."%'  and status > 0  and status LIKE '%". $status ."%' ORDER BY id DESC ";
 			// (4) add LIMIT clause
 			$query .= " LIMIT ?,?";
 			$stmt = $conn->stmt_init();
@@ -67,7 +78,7 @@ include '../teamplate1/header.php';
 			$stmt->execute();
 			$result = $stmt->get_result();
 			if ($result) {
-				echo '<table class="table table-bordered ">
+				echo '<table class="table table-banddered ">
 						<tr>
 						<th scope="col">Mã</th>
 						<th scope="col">Tên khách hàng</th>
@@ -94,24 +105,34 @@ include '../teamplate1/header.php';
 							<td><a href="../Order/order_information.php?id=' . $id . '">Xem thông tin </a></td>
 							<td><a href="../Order/edit_order.php?id=' . $id . '">';
 							if ($status == 1) {
-								echo'Đang giao hàng';
+								echo'Đã tiếp nhận đơn hàng';
 							}
 							else if($status == 2) {
-								echo'Đã giao hàng ';
+								echo'Đã giao Chuyển hàng cho shipper ';
 							}
-							else{
-								echo'
-								Đang xử lý';
+							else if($status == 3) {
+								echo'Shipper đang giao hàng';
+							}
+							else if($status == 4) {
+								echo'Người dùng đã nhận hàng';
+							}
+							else if($status == 5) {
+								echo'Hoàn thành';
+							}
+							else if($status == 6) {
+								echo'Người dùng đã hủy';
+							}
+							else if($status == 0) {
+								echo'Đang chờ xử lý';
 							}
 							echo '</td></a></td>
-						
 							';
 							if ($active == 0) {
 								echo'
-								<td><a href="../Order/show_order.php?id=' . $id . '">Đã ẩn 	 </a></td>';
+								<td><a href="../Order/show_order.php?id=' . $id . '">Chưa hoàn thành</a></td>';
 							}else{
 								echo'
-								<td><a href="../Order/hidden_order.php?id=' . $id . '" onclick="return checkDelete()">Đang hiển thị </a></td>';
+								<td><a href="../Order/hidden_order.php?id=' . $id . '" onclick="return checkDelete()">Đã hoàn thành </a></td>';
 							}
 							echo '</tr>';
 				}
@@ -119,16 +140,16 @@ include '../teamplate1/header.php';
 				// free up the resources                                                         
 				$result->free_result(); 
 			} else { 
-				echo '<p class="text-center">The current db_user could not be retrieved.</p>';
+				echo '<p class="text-center">Không thể truy xuất đơn hàng hiện tại.</p>';
 				exit;
 			}
 			// (6) display the total number of records and paging button     
-			$query = "SELECT id, name, created_at,status   FROM transaction  where  id LIKE '%". $search ."%'  or name LIKE '%". $search ."%'  or created_at LIKE '%". $search ."%' or status = 1 ORDER BY id DESC";
+			$query = "SELECT id, name, created_at,status   FROM transaction  where  id LIKE '%". $search ."%'  and name LIKE '%". $search ."%'  and created_at LIKE '%". $search ."%' and status > 0 ORDER BY id DESC";
 			$result = $conn->query($query);
 			$row = $result->fetch_array(MYSQLI_NUM);
 			$members = htmlspecialchars($row[0], ENT_QUOTES);
 			$conn->close();   
-			$nav_string = "<p class='text-center'>Số lượng hóa đơn: $members</p>";
+			$nav_string = "<p class='text-center'>Số lượng hóa đơn hàng:". $result->num_rows ."</p>";
 			$nav_string .= "<p class='text-center'>";
 			if ($pages > 1) {                                             
 				// what number is the current page?
@@ -153,9 +174,8 @@ include '../teamplate1/header.php';
 		?>
          </div>
             </div>
-    </div>
-
-</body>
+	</div>
+</div>
 <?php
 
 include '../teamplate1/script.php';
